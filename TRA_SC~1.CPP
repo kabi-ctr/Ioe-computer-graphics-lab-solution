@@ -6,7 +6,7 @@
 
 void translation(int *a, int *b){
 	int i,tx,ty,x[3],y[3];
-	printf("enter the translation factor");
+	printf("Enter the translation factor: ");
 	scanf("%d%d",&tx,&ty);
 	for(i=0; i<3;i++){
 		x[i]=a[i]+tx;
@@ -22,7 +22,7 @@ void translation(int *a, int *b){
 	}
 void scaling(int *a, int *b){
 	int sx,sy,x[3],y[3],i;
-	printf("enter the scaling factor");
+	printf("enter the scaling factor: ");
 	scanf("%d%d",&sx,&sy);
 	for(i=0; i<3; i++){
 		x[i] = a[i]*sx;
@@ -37,9 +37,9 @@ void scaling(int *a, int *b){
 	}
 void fixed_point(int *a, int *b){
 	int sx,sy,p,q,x[3],y[3],i;
-	printf("enter the fixed point");
+	printf("enter the fixed point: ");
 	scanf("%d%d",&p,&q);
-	printf("enter the scaling factors");
+	printf("enter the scaling factors: ");
 	scanf("%d%d",&sx,&sy);
 	for(i=0; i<3; i++){
 		x[i] = a[i]*sx-p*sx+p;
@@ -60,9 +60,9 @@ void fixed_point(int *a, int *b){
 
 
 int main(){
-	int gd=DETECT, gm,a[3],b[3],i;
+	int gd=DETECT, gm,a[3],b[3],i,x;
 	initgraph(&gd,&gm,"C:\\TurboC3\\BGI");
-	printf("Enter the coordinates of the triangle");
+	printf("Enter the coordinates of the triangle\n");
 	for(i=0; i<3; i++){
 		scanf("%d%d",&a[i],&b[i]);
 		}
@@ -72,10 +72,21 @@ int main(){
 			line(a[i],b[i],a[i+2],b[i+2]);
 			}
 		}
-    //now here we will add a switch statement in order to call functions as required
-	//translation(a,b);
-    //scaling(a,b);
-	//fixed_point(a,b);
+	  printf("1.translation\n");
+	  printf("2.scaling\n");
+	  printf("3.scaling fixed point\n");
+	  printf("choose a number to translate: \n");
+	  scanf("%d",&x);
+	  if(x==1){
+		translation(a,b);
+	 }
+	 if(x==2){
+	 scaling(a,b);
+	 }
+	 if(x==3){
+		 fixed_point(a,b);
+	     }
+	outtextxy(100,300,"Kabir Poudel");
 	getch();
 	closegraph();
 	return 0;
